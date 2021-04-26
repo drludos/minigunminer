@@ -38,20 +38,20 @@ jobs:
         include:
           - os: windows-latest
             TARGET: windows
-            CMD_BUILD: pyinstaller -F -n MinigunMiner main.py
+            CMD_BUILD: pyinstaller -F -n MinigunMiner --add-data="/assets/*;assets" main.py
             OUT_FILE_NAME: MinigunMiner.exe
             ASSET_MIME: application/vnd.microsoft.portable-executable
           - os: macos-latest
             TARGET: macos
             CMD_BUILD: >
-                pyinstaller -F -w -n MinigunMiner main.py &&
+                pyinstaller -F -w -n MinigunMiner --add-data="/assets/*:assets" main.py &&
                 cd dist/ &&
                 zip -r9 MinigunMiner MinigunMiner.app/
             OUT_FILE_NAME: MinigunMiner.zip
             ASSET_MIME: application/zip    
           - os: ubuntu-latest
             TARGET: linux
-            CMD_BUILD: pyinstaller -F -n MinigunMiner main.py
+            CMD_BUILD: pyinstaller -F -n MinigunMiner --add-data="/assets/*:assets" main.py
             OUT_FILE_NAME: MinigunMiner
             ASSET_MIME: application/octet-stream
     steps:
