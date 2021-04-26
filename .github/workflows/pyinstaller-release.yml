@@ -49,7 +49,7 @@ jobs:
                 zip -r9 MinigunMiner MinigunMiner.app/
             OUT_FILE_NAME: MinigunMiner.zip
             ASSET_MIME: application/zip    
-	   - os: ubuntu-latest
+          - os: ubuntu-latest
             TARGET: linux
             CMD_BUILD: pyinstaller -F -n MinigunMiner main.py
             OUT_FILE_NAME: MinigunMiner
