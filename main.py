@@ -145,7 +145,7 @@ def initGame():
 
     #Reset background (and its bitmask)
     global sprBackground
-    sprBackground = pygame.image.load("assets/background.png").convert()
+    sprBackground = pygame.image.load(os.path.join(assetsPath, "background.png")).convert()
     global hitBackground
     hitBackground=pygame.mask.from_threshold(sprBackground, colorDirt, (1, 1, 1, 255))
     
