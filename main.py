@@ -15,6 +15,7 @@
 
 import pygame
 import sys
+import os
 import math
 import random
 
@@ -22,7 +23,6 @@ from bullet import Bullet
 from gold import Gold
 
 from pygame.locals import *
-
 
 
 # === INIT ===
@@ -46,19 +46,30 @@ clock = pygame.time.Clock()
 
 # === ASSETS ===
 
+# Detect whether we run from a frozen app (PyInstaller) or source (normal case), as it'll change where the data files are located (thanks: https://stackoverflow.com/questions/41204057/pygame-not-loading-png-after-making-exe-with-pyinstaller)
+# If the code is frozen, use this path (the temp folder created by PyInstaller):
+if getattr(sys, 'frozen', False):
+    rootPath = sys._MEIPASS
+# Else, we use the path the current file is currently running from
+else:
+    rootPath = os.path.dirname(__file__)
+
+#Define the assets dir
+assetsPath=os.path.join(rootPath, "assets")
+
 # Player sprite
-sprPlayerORIG = pygame.image.load("assets/player.png").convert()
+sprPlayerORIG = pygame.image.load( os.path.join(assetsPath, "player.png")).convert()
 sprPlayerORIG.set_colorkey((255,0,255))
 sprPlayer=pygame.transform.rotate(sprPlayerORIG, -90)
 # Load the head sprite (non-rotated) separatedly
-sprPlayerHEAD = pygame.image.load("assets/playerHEAD.png").convert()
+sprPlayerHEAD = pygame.image.load( os.path.join(assetsPath, "playerHEAD.png")).convert()
 sprPlayerHEAD.set_colorkey((255,0,255))
 # Load the player bitmask from another file (used for collision)
-hitPlayer = pygame.image.load("assets/playerHIT.png")
+hitPlayer = pygame.image.load( os.path.join(assetsPath, "playerHIT.png"))
 hitPlayer = pygame.mask.from_surface(hitPlayer)
 
 # Background
-sprBackground = pygame.image.load("assets/background.png").convert()
+sprBackground = pygame.image.load(os.path.join(assetsPath, "background.png")).convert()
 colorDirt=(153,99,67, 255) #color used for dirt to dig into
 colorVoid=(87,47,23, 255) #color used for the void that we can move into
 #Generate a bitmask of the BG using the "dirt" color
@@ -79,9 +90,9 @@ txtHowto2 = font.render("PRESS SPACE TO START or ESC to quit", True, (255,255,25
 txtHighscore = font.render("NEW HIGHSCORE!", True, (255,255,255))
 
 #Audio files
-sfxShoot=pygame.mixer.Sound("assets/shoot.wav")
-sfxGold=pygame.mixer.Sound("assets/gold.wav")
-sfxGameOver=pygame.mixer.Sound("assets/gameover.wav")
+sfxShoot=pygame.mixer.Sound(os.path.join(assetsPath, "shoot.wav"))
+sfxGold=pygame.mixer.Sound(os.path.join(assetsPath, "gold.wav"))
+sfxGameOver=pygame.mixer.Sound(os.path.join(assetsPath, "gameover.wav"))
 
 
 
