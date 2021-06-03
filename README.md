@@ -24,7 +24,7 @@ For convenience, I’ve have also uploaded it to Replit, so you can play it onli
 
 It might be laggy, and apparently there is no sound output, so I recommend playing on your computer if possible, but you’ll still get the core idea through the online version.
 
-I’ve also added standalone downloadable builds *(working out of the box without Python installed on your computer)* for Windows, Linux and MacOS. They have been built with PyInstaller through Github Actions (Github’s CI/CD pipeline), so please report any issue you may have using them.
+I’ve also added [standalone downloadable builds](https://github.com/drludos/minigunminer/releases/tag/v1-ports) *(working out of the box without Python installed on your computer)* for Windows, Linux and MacOS. They have been built with PyInstaller through Github Actions (Github’s CI/CD pipeline), so please report any issue you may have using them.
 
 
 
